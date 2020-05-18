@@ -2,7 +2,6 @@ package br.pro.hashi.ensino.desagil.aps.model;
 
 public class And3Gate extends Gate {
     private final NandGate nand0;
-    private final NandGate nand1;
     private final NandGate nand2;
     private final NandGate nand3;
 
@@ -10,7 +9,7 @@ public class And3Gate extends Gate {
         super("AND3", 3);
 
         nand0 = new NandGate();
-        nand1 = new NandGate();
+        NandGate nand1 = new NandGate();
         nand2 = new NandGate();
         nand3 = new NandGate();
 
@@ -34,7 +33,7 @@ public class And3Gate extends Gate {
         }
         if (inputIndex == 0) {
             nand0.connect(0, emitter);
-        } else if(inputIndex == 1){
+        } else if (inputIndex == 1) {
             nand0.connect(1, emitter);
         } else {
             nand2.connect(1, emitter);

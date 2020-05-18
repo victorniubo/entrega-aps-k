@@ -1,8 +1,8 @@
 package br.pro.hashi.ensino.desagil.aps.view;
 
 import br.pro.hashi.ensino.desagil.aps.model.Gate;
-import br.pro.hashi.ensino.desagil.aps.model.Switch;
 import br.pro.hashi.ensino.desagil.aps.model.Light;
+import br.pro.hashi.ensino.desagil.aps.model.Switch;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,7 +13,6 @@ import java.awt.event.MouseListener;
 import java.net.URL;
 
 public class GateView extends FixedPanel implements ActionListener, MouseListener {
-    private final Gate gate;
     private final Light luz;
 
     private final Switch switch0;
@@ -30,10 +29,8 @@ public class GateView extends FixedPanel implements ActionListener, MouseListene
     public GateView(Gate gate) {
         super(300, 150);
 
-        this.gate = gate;
 
-
-        luz = new Light(250,0,0);
+        luz = new Light(250, 0, 0);
         color = luz.getColor();
 
         switch0 = new Switch();
@@ -63,8 +60,7 @@ public class GateView extends FixedPanel implements ActionListener, MouseListene
             add(in1Label, 4, 76, 75, 25);
             add(in1, 45, 78, 20, 20);
             in1.addActionListener(this);
-        }
-        else if (gate.getInputSize() == 3){
+        } else if (gate.getInputSize() == 3) {
             gate.connect(1, switch1);
             gate.connect(2, switch2);
             add(in0Label, 4, 40, 75, 25);
@@ -94,13 +90,13 @@ public class GateView extends FixedPanel implements ActionListener, MouseListene
         //out.setEnabled(false);
 
         addMouseListener(this);
-        luz.connect(0,gate);
+        luz.connect(0, gate);
         update();
 
     }
 
     private void update() {
-        boolean saida;
+
 
         if (in0.isSelected()) {
             switch0.turnOn();
@@ -136,7 +132,7 @@ public class GateView extends FixedPanel implements ActionListener, MouseListene
         int y = mouseEvent.getY();
 
         // Se o clique foi dentro do quadrado colorido...
-        if (Math.sqrt(x - 225) + Math.sqrt(y-61) <= 400) {
+        if (Math.sqrt(x - 225) + Math.sqrt(y - 61) <= 400) {
 
             // ...então abrimos a janela seletora de cor...
             color = JColorChooser.showDialog(this, null, color);
